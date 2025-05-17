@@ -1,0 +1,31 @@
+name: Docker Image CI
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      HOST: ${{ secrets.HOST }}
+      PORT: ${{ secrets.PORT }}
+      DB: ${{ secrets.DB }}
+      USER: ${{ secrets.USER }}
+      PASSWORD: ${{ secrets.PASSWORD }}
+      ALGORITHM: ${{ secrets.ALGORITHM }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Construcción de la imagen con un nombre fijo
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag my-image-name:latest
+
+      # Verificar la instalación del driver ODBC
+      - name: Check ODBC Driver Installation
+        run: |
+          docker run --rm my-image-name:latest odbcinst -q -d || echo "ODBC Driver not found"

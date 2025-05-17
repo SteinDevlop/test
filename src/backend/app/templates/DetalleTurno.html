@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Turno</title>
+</head>
+<body>
+    <h1>Detalle del Turno</h1>
+    {% if turno %}
+    <div>
+        <p><strong>ID del Turno:</strong> {{ turno.ID }}</p>
+        <p><strong>Tipo de Turno:</strong> {{ turno.TipoTurno }}</p>
+    </div>
+    {% else %}
+    <p>No se encontró el turno.</p>
+    {% endif %}
+    <p><a href="/shifts">Volver al Listado</a></p>
+    <p><a href="/">Volver a la Principal</a></p>
+</body>
+</html>

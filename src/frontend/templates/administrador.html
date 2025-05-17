@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel del Administrador</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='css/administrador.css') }}">
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>Administrador</h2>
+
+      <button class="menu-btn" onclick="location.href='/transport_units/create'">Actualizar Flota</button>
+      <button class="menu-btn" onclick="location.href='/maintainance/crear'" >Agendar Mantenimiento</button>
+      <button class="menu-btn" onclick="location.href='/routes/create'">Asignar Ruta Vehículo</button>
+
+      <div class="sublist-title">Gestión CRUD</div>
+
+      <!-- CRUD: Rutas -->
+      <div class="crud-section">
+        <button class="crud-toggle">▶ Rutas</button>
+        <div class="crud-options">
+          <button class="crud-btn"onclick="location.href='/routes/create'">➕ Añadir Ruta</button>
+          <button class="crud-btn"onclick="location.href='/routes/list'">📄 Leer Rutas</button>
+          <button class="crud-btn"onclick="location.href='/routes/update'">🖊️ Actualizar Ruta</button>
+          <button class="crud-btn"onclick="location.href='/routes/delete'">🗑️ Eliminar Ruta</button>
+        </div>
+      </div>
+
+      <!-- CRUD: Usuarios -->
+      <div class="crud-section">
+        <button class="crud-toggle">▶ Usuarios</button>
+        <div class="crud-options">
+          <button class="crud-btn" onclick="location.href='/user/crear'">➕ Añadir Usuario</button>
+          <button class="crud-btn" onclick="location.href='/user/users'">📄 Leer Usuarios</button>
+          <button class="crud-btn" onclick="location.href='/user/actualizar'">🖊️ Actualizar Usuario</button>
+          <button class="crud-btn" onclick="location.href='/user/eliminar'">🗑️ Eliminar Usuario</button>
+        </div>
+      </div>
+
+      <!-- CRUD: Operarios -->
+      <div class="crud-section">
+        <button class="crud-toggle">▶ Operarios</button>
+        <div class="crud-options">
+          <button class="crud-btn" onclick="location.href='/user/crear'">➕ Añadir Usuario</button>
+          <button class="crud-btn" onclick="location.href='/user/users'">📄 Leer Usuarios</button>
+          <button class="crud-btn" onclick="location.href='/user/actualizar'">🖊️ Actualizar Usuario</button>
+          <button class="crud-btn" onclick="location.href='/user/eliminar'">🗑️ Eliminar Usuario</button>
+        </div>
+      </div>
+
+      <!-- CRUD: Mantenimiento -->
+      <div class="crud-section">
+        <button class="crud-toggle">▶ Mantenimiento</button>
+        <div class="crud-options">
+          <button class="crud-btn" onclick="location.href='/maintainance/crear'">➕ Añadir Mantenimiento</button>
+          <button class="crud-btn" onclick="location.href='/maintainance/maintainancements'">📄 Leer Mantenimientos</button>
+          <button class="crud-btn" onclick="location.href='/maintainance/actualizar'">🖊️ Actualizar Mantenimiento</button>
+          <button class="crud-btn" onclick="location.href='/maintainance/eliminar'">🗑️ Eliminar Mantenimiento</button>
+        </div>
+      </div>
+
+      <!-- CRUD: Supervisores -->
+      <div class="crud-section">
+        <button class="crud-toggle">▶ Supervisores</button>
+        <div class="crud-options">
+          <button class="crud-btn" onclick="location.href='/user/crear'">➕ Añadir Usuario</button>
+          <button class="crud-btn" onclick="location.href='/user/users'">📄 Leer Usuarios</button>
+          <button class="crud-btn" onclick="location.href='/user/actualizar'">🖊️ Actualizar Usuario</button>
+          <button class="crud-btn" onclick="location.href='/user/eliminar'">🗑️ Eliminar Usuario</button>
+        </div>
+      </div>
+          <!-- CRUD: Horario -->
+      <div class="crud-section">
+        <button class="crud-toggle">▶ Horario</button>
+        <div class="crud-options">
+          <button class="crud-btn" onclick="location.href='/schedules/create'">➕ Añadir horario</button>
+          <button class="crud-btn" onclick="location.href='/schedules/'">📄 Leer horario</button>
+          <button class="crud-btn" onclick="location.href='/schedules/update'">🖊️ Actualizar horario</button>
+          <button class="crud-btn" onclick="location.href='/schedules/delete'">🗑️ Eliminar horario</button>
+        </div>
+      </div>
+          <!-- CRUD: Tarifa -->
+          <div class="crud-section">
+            <button class="crud-toggle">▶ Tarifa</button>
+            <div class="crud-options">
+              <button class="crud-btn">➕ Añadir Tarifa</button>
+              <button class="crud-btn">📄 Leer Tarifa</button>
+              <button class="crud-btn">🖊️ Actualizar Tarifa</button>
+              <button class="crud-btn">🗑️ Eliminar Tarifa</button>
+            </div>
+          </div>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+      <header class="header">
+        <h1>Panel General del Administrador</h1>
+      </header>
+
+      <div class="dashboard">
+        <div class="dashboard-card">
+          <h3>Total de Vehículos</h3>
+          <p>150</p>
+        </div>
+        <div class="dashboard-card">
+          <h3>Usuarios Registrados</h3>
+          <p>1,245</p>
+        </div>
+        <div class="dashboard-card">
+          <h3>Operarios Activos</h3>
+          <p>73</p>
+        </div>
+        <div class="dashboard-card">
+          <h3>Supervisores</h3>
+          <p>15</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JS para acordeones -->
+  <script>
+    document.querySelectorAll('.crud-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const options = toggle.nextElementSibling;
+        options.classList.toggle('show');
+        toggle.textContent = options.classList.contains('show') ? '▼ ' + toggle.textContent.slice(2) : '▶ ' + toggle.textContent.slice(2);
+      });
+    });
+  </script>
+</body>
+</html>

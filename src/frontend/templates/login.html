@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/login.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form">
+            <h2>Bienvenido</h2>
+            <p>Inicia sesión para continuar</p>
+
+            <form action="/login/" method="POST">
+                <label for="id">ID</label>
+                <input type="text" id="id" name="username" placeholder="Ingresa tu ID" required>
+            
+                <label for="password">Contraseña <span>(Máximo 12 caracteres)</span></label>
+                <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" maxlength="12" required>
+            
+                <button type="submit">Iniciar sesión</button>
+            </form>
+            
+
+            <div class="register-link">
+                <a href="registro.html">Registrarme</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
